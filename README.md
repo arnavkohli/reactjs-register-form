@@ -2,16 +2,16 @@
 
 To clone the repository on your computer 
 ```bash
-$ git clone https://github.com/kapilbarad/reactjs-login-form.git
-$ cd reactjs-login-form.git
+$ git clone https://github.com/arnavkohli/reactjs-register-form.git
+$ cd reactjs-register-form
 ```
 
-To install dependencies,
+To install dependencies
 ```bash
 $ npm install
 ```
 
-To run the project itself,
+To run the project itself
 ```bash
 $ npm start
 ```
