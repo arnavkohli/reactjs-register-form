@@ -1,6 +1,6 @@
 import  React, { Component } from "react";
-import { Form, Button, FormGroup, FormControl, ControlLabel, Row, HelpBlock, Col}  from "react-bootstrap";
-import { Radio, RadioGroup, FormControlLabel, Container } from '@material-ui/core';
+import { Button, FormGroup, FormControl, ControlLabel, Row, HelpBlock, Col}  from "react-bootstrap";
+import { Radio, RadioGroup, FormControlLabel } from '@material-ui/core';
 import { isEmail, isEmpty, isLength, isContainWhiteSpace } from 'shared/validator';
 import './register.sass';
 
@@ -51,7 +51,7 @@ class Register extends Component {
             errors.telecom = "Contact number can't be blank";
         }
         if (isEmpty(formData.gender)) {
-            errors.gender = "Gender number can't be blank";
+            errors.gender = "Gender can't be blank";
         }
         if (isEmpty(formData.birthdate)) {
             errors.birthdate = "Birthdate can't be blank";
@@ -73,9 +73,6 @@ class Register extends Component {
             errors.period = "Period can't be blank";
         }
 
-
-
-
         if (isEmpty(errors)) {
             return true;
         } else {
@@ -90,8 +87,8 @@ class Register extends Component {
         let errors = this.validateRegisterForm();
 
         if(errors === true){
-            alert("You are successfully signed in...");
-            window.location.reload()
+            console.log("Data", this.state.formData);
+            alert(this.state.formData.email  + " registered!");
         } else {
             this.setState({
                 errors: errors,
@@ -128,7 +125,7 @@ class Register extends Component {
 
                                 <FormGroup controlId="telecom" validationState={ formSubmitted ? (errors.telecom ? 'error' : 'success') : null }>
                                     <ControlLabel>Contact Number</ControlLabel>
-                                    <FormControl type="number" name="password" placeholder="Enter your contact number" onChange={this.handleInputChange} />
+                                    <FormControl type="text" name="telecom" placeholder="Enter your contact number" onChange={this.handleInputChange} />
                                 { errors.telecom &&
                                     <HelpBlock>{errors.telecom}</HelpBlock>
                                 }
@@ -136,7 +133,7 @@ class Register extends Component {
 
                                 <FormGroup controlId="gender" validationState={ formSubmitted ? (errors.gender ? 'error' : 'success') : null }>
                                 <ControlLabel>Gender</ControlLabel>
-                                  <RadioGroup aria-label="gender" name="gender1" onChange={this.handleInputChange} row>
+                                  <RadioGroup aria-label="gender" name="gender" onChange={this.handleInputChange} row>
                                     <FormControlLabel value="female" control={<Radio />} label="Female" />
                                     <FormControlLabel value="male" control={<Radio />} label="Male" />
                                     <FormControlLabel value="other" control={<Radio />} label="Other" />
